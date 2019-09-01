@@ -1,0 +1,23 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: eureka-service-c
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000 #springboot admin管理中心地址
+
+eureka:
+  client:
+    service-url:
+      #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 在默认情况下大多数Actuator的端点并没有完全公开，这里我将所有端点都进行公开进行管理
+
