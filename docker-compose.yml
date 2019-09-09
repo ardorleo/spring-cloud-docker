@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  eureka-server:
+    image: eureka-server:latest
+    ports:
+      - 8761:8761
+
+  eureka-service-b:
+    image: eureka-service-b:latest
+    ports:
+      - 8082:8082
+
+  eureka-service-c:
+    image: eureka-service-c:latest
+    ports:
+      - 8083:8083
+
+  eureka-service-a:
+    image: eureka-service-a:latest
+    links:
+      - eureka-service-b
+      - eureka-service-c
+    ports:
+      - 8081:8081
+
+  admin-server:
+    image: admin-server:latest
+    ports:
+      - 8000:8000
+
+  api-gateway:
+    image: api-gateway:latest
+    ports:
+      - 9000:9000

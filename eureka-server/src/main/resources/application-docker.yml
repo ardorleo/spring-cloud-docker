@@ -1,0 +1,28 @@
+server:
+  port: 8761 #端口号
+
+spring:
+  application:
+    name: eureka-server
+  boot:
+    admin:
+      client:
+        url: http://192.168.99.100:8000 #springboot admin管理中心地址
+        instance:
+          service-base-url: http://192.168.99.100:8761 #让springboot admin管理中心发现本服务
+
+eureka:
+  instance:
+    hostname: 192.168.99.100 #eureka服务端的实例名称
+  client:
+    register-with-eureka: false  #false表示不向注册中心注册自己。
+    fetch-registry: false #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    service-url:
+      #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 在默认情况下大多数Actuator的端点并没有完全公开，这里我将所有端点都进行公开进行管理

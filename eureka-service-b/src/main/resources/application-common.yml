@@ -7,13 +7,15 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:8000 #springboot admin管理中心地址
+        url: http://192.168.99.1:8000 #springboot admin管理中心地址
+        instance:
+          service-base-url: http://192.168.99.1:8082 #让springboot admin管理中心发现本服务
 
 eureka:
   client:
     service-url:
       #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://192.168.99.1:8761/eureka/
 
 management:
   endpoints:
