@@ -117,36 +117,34 @@ docker logs -f 容器id
 - eureka注册中心：http://192.168.99.100:8761/
 - springboot admin监控中心：http://192.168.99.100:8000
 
-- 测试服务a：
+- 测试服务a：http://192.168.99.100:8081/version-a/get
 ``` 
-调用：http://192.168.99.100:8081/version-a/get
 返回：欢迎访问[service-a]服务，版本是v1.0
 ```
 
-- 测试服务b：
+- 测试服务b：http://192.168.99.100:8082/version-b/get
 ``` 
-调用：http://192.168.99.100:8082/version-b/get
 返回：欢迎访问[service-b]服务，版本是v1.0
 ```
 
-- 测试服务c：
+- 测试服务c：http://192.168.99.100:8083/version-c/get
 ``` 
-调用：http://192.168.99.100:8083/version-c/get
 返回：欢迎访问[service-c]服务，版本是v1.0
 ```
 
-- 测试在服务a中通过fiegn的方式调用服务b和服务c：
+- 测试在服务a中通过fiegn的方式调用服务b和服务c：http://192.168.99.100:8081/version-a/getService
 ``` 
-调用：http://192.168.99.100:8081/version-a/getService
 返回：调用service-b返回的是：[欢迎访问[service-b]服务，版本是v1.0]；调用service-c返回的是：[欢迎访问[service-c]服务，版本是v1.0]
 ```
 
-- 测试网关：
-``` 
-三个服务分别调用的是：
+- 测试网关：三个服务分别调用的是：
+
 http://192.168.99.100:9000/api/service-a/version-a/get
+
 http://192.168.99.100:9000/api/service-b/version-b/get
+
 http://192.168.99.100:9000/api/service-c/version-c/get
+``` 
 返回结果和上面测试单个服务的一样
 ```
 
