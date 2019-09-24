@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  eureka-server:
-    image: eureka-server:latest
+  eureka-server:                  #服务名
+    image: eureka-server:latest   #依赖的镜像
     ports:
-      - 8761:8761
+      - 8761:8761                 #端口映射，格式：[主机端口：容器端口]
 
   eureka-service-b:
     image: eureka-service-b:latest
